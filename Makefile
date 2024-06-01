@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+         #
+#    By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/30 18:20:11 by carolinatac       #+#    #+#              #
-#    Updated: 2024/05/30 18:31:56 by carolinatac      ###   ########.fr        #
+#    Created: 2024/06/01 12:42:08 by ctacconi          #+#    #+#              #
+#    Updated: 2024/06/01 12:42:10 by ctacconi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

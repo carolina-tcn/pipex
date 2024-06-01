@@ -1,0 +1,31 @@
+Manejar redirecciones de archivos y el pipe entre los comandos
+
+./pipex archivo1 comando1 comando2 archivo2
+< archivo1 comando1 | comando2 > archivo2
+
+funciones autorizadas: open, close, read, write,
+malloc, free, perror,
+strerror, access, dup, dup2,
+execve, exit, fork, pipe,
+unlink, wait, waitpid
+• ft_printf and any equivalent
+YOU coded
+
+
+1. abrir y redireccionar archivos 
+    - abrir archivo 1 para lectura
+    - abrir archivo 2 para escritura (crear o truncar si ya existe)
+
+2. crear la funcion pipe() para crear una pipe, esto me dara dos fd uno para lectura y otro para escritura
+3. fork y exec:
+    Crea un proceso hijo con fork().
+    En el proceso hijo, redirecciona stdin para leer de archivo1 y stdout para escribir en el extremo de escritura del pipe. Luego, ejecuta comando1.
+    En el proceso padre, espera a que el proceso hijo termine.
+    Crea otro proceso hijo con fork().
+    En este nuevo proceso hijo, redirecciona stdin para leer del extremo de lectura del pipe y stdout para escribir en archivo2. Luego, ejecuta comando2.
+
+4.Redirecciones:
+Redirigir stdin de comando1 a archivo1.
+Redirigir stdout de comando1 al extremo de escritura del pipe.
+Redirigir stdin de comando2 al extremo de lectura del pipe.
+Redirigir stdout de comando2 a archivo2.
