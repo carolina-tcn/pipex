@@ -18,21 +18,15 @@ int	main(int argc, char **argv, char **envp)
 {
 	envp: array de cadena de chars que contiene las variables del entorno del programa
 	cada cadena es una variable de entorno en el formato VARIABLE=valor
-	
 	- gestion de argumentos
-
 	- abrir el infile en modo lectura
-
 	- abrir el outfile en modo escritura, se crea si no exist y trunca si si 
-
 	- crear la pipe (con pipefd?) para comunicar comando1 y comando2
 
 
 Redirecciones:
 	- primer proceso hijo para comando1
-
 	- segundo proceso hijo para comando2
-
 	- cerrar y esperar
 
 	return (0);
