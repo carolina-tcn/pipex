@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 18:20:16 by carolinatac       #+#    #+#             */
-/*   Updated: 2024/06/04 18:37:24 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/06/04 20:36:22 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,36 @@
 	
 //los argumentos son 4: archivo1 comando1 comando2 archivo 2 (comandos de shell con sus parametros)
 
-void	pip_error(void)
+void	arg_error(void)
 {
-	ft_putstr_fd(ERROR, STDERR_FILENO);
-	exit (1);
+	ft_putstr_fd("Error\nEx: ./pipex infile cmd1 cmd2 outfile\n", STDERR_FILENO);
+	exit (EXIT_FAILURE);
+}
+
+void	error(void)
+{
+	perror("ERROR\n");
+	exit (EXIT_FAILURE);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
-	if (argc < 5)
-		pip_error();
+	int		fd[2];
+	pid_t	pid_process;
 
+	if (argc != 5)
+		arg_error();
+	//int pipe(int pipefd[2]); si ret 0 success, -1 error. creo la pipe para comunicar los cmnds
+	if (pipe(fd) == -1)
+		error();
+	pid = fork(); //crea un nuevo proceso copiando el actual, creo padre e hijo y como se llamo pipe se comunican entre ellos
+					//estan integrados	
+	if (pid_process < 0)
+		error();
+	else if (!pid_process)
+		child_process(fd, argv, envp);
+	else
+		parent_process(fd, argv, envp);
 	envp: array de cadena de chars que contiene las variables del entorno del programa
 	cada cadena es una variable de entorno en el formato VARIABLE=valor
 	- gestion de argumentos
