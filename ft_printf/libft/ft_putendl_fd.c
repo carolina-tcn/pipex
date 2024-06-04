@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
+/*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 18:09:13 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/06/04 18:36:59 by ctacconi         ###   ########.fr       */
+/*   Created: 2024/01/26 20:53:27 by ctacconi          #+#    #+#             */
+/*   Updated: 2024/01/31 16:25:50 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "../ft_printf/ft_printf.h"
-# include <unistd.h>
-# include <stdio.h>
+//envia el string a fd con \n
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
 
-# define ERROR	"Wrong number of arguments\n"
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
+}
 
-#endif
+/*int	main(void)
+{
+	ft_putendl_fd("hola", 1);
+}*/

@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
+/*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 18:09:13 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/06/04 18:36:59 by ctacconi         ###   ########.fr       */
+/*   Created: 2024/01/09 15:34:06 by ctacconi          #+#    #+#             */
+/*   Updated: 2024/01/31 16:18:37 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "../ft_printf/ft_printf.h"
-# include <unistd.h>
-# include <stdio.h>
+//Determina si todos los caracteres en una cadena son caracteres ASCII
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
+}
 
-# define ERROR	"Wrong number of arguments\n"
-
-#endif
+/*int	main(void)
+{
+	printf("%d\n", ft_isascii(150));
+	return (0);
+}*/

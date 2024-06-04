@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
+/*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 18:09:13 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/06/04 18:36:59 by ctacconi         ###   ########.fr       */
+/*   Created: 2024/01/26 19:48:29 by ctacconi          #+#    #+#             */
+/*   Updated: 2024/01/31 16:24:54 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "../ft_printf/ft_printf.h"
-# include <unistd.h>
-# include <stdio.h>
+//envia el c al fd
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
 
-# define ERROR	"Wrong number of arguments\n"
-
-#endif
+/*int	main(void)
+{
+	ft_putchar_fd('s', 1);
+}*/

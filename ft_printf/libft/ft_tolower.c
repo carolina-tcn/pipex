@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
+/*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 18:09:13 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/06/04 18:36:59 by ctacconi         ###   ########.fr       */
+/*   Created: 2024/01/15 17:49:02 by ctacconi          #+#    #+#             */
+/*   Updated: 2024/01/31 16:22:41 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "../ft_printf/ft_printf.h"
-# include <unistd.h>
-# include <stdio.h>
+//Convierte un carácter a minúsculas
+int	ft_tolower(int c)
+{
+	if (c >= 65 && c <= 90)
+		return (c += 32);
+	else
+		return (c);
+}
 
-# define ERROR	"Wrong number of arguments\n"
+/*int	main(void)
+{
+	char	c;
 
-#endif
+	c = 'Z';
+	printf("%c\n", ft_tolower(c));
+}*/

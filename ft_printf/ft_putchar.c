@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
+/*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 18:09:13 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/06/04 18:36:59 by ctacconi         ###   ########.fr       */
+/*   Created: 2024/02/05 22:05:50 by ctacconi          #+#    #+#             */
+/*   Updated: 2024/02/10 18:22:26 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "ft_printf.h"
 
-# include "../ft_printf/ft_printf.h"
-# include <unistd.h>
-# include <stdio.h>
-
-# define ERROR	"Wrong number of arguments\n"
-
-#endif
+//imprimir un solo caracter
+void	ft_putchar(char c, int *len)
+{
+	if (write(1, &c, 1) == -1)
+		*len = -1;
+	else
+		*len += 1;
+}
