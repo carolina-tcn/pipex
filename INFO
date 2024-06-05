@@ -11,6 +11,7 @@ unlink, wait, waitpid
 • ft_printf and any equivalent
 YOU coded
 
+FD->is an int that identifies an open file of the process
 
 1. abrir y redireccionar archivos 
     - abrir archivo 1 para lectura

@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 18:20:16 by carolinatac       #+#    #+#             */
-/*   Updated: 2024/06/04 20:36:22 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/06/05 20:02:45 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,27 @@ void	error(void)
 	exit (EXIT_FAILURE);
 }
 
+//tengo el proceso hijo creado
+void	child_process(int *fd, char **argv, char **envp)
+{
+	int	open(const char *path, int flags)
+		- for reading, writing or both
+	
+}
+
+void	parent_process(int *fd, char **argv, char **envp)
+{
+	
+}
+Redirecciones:
+	- primer proceso hijo para comando1
+	- segundo proceso hijo para comando2
+	- cerrar y esperar
+	
 int	main(int argc, char **argv, char **envp)
 {
+	envp: array de cadena de chars que contiene las variables del entorno del programa
+	cada cadena es una variable de entorno en el formato VARIABLE=valor
 	int		fd[2];
 	pid_t	pid_process;
 
@@ -36,7 +55,8 @@ int	main(int argc, char **argv, char **envp)
 	//int pipe(int pipefd[2]); si ret 0 success, -1 error. creo la pipe para comunicar los cmnds
 	if (pipe(fd) == -1)
 		error();
-	pid = fork(); //crea un nuevo proceso copiando el actual, creo padre e hijo y como se llamo pipe se comunican entre ellos
+	pid = fork(); //crea un nuevo proceso copiando el actual, creo padre e hijo y como llamo a  
+					//pipe se comunican entre ellos
 					//estan integrados	
 	if (pid_process < 0)
 		error();
@@ -44,17 +64,10 @@ int	main(int argc, char **argv, char **envp)
 		child_process(fd, argv, envp);
 	else
 		parent_process(fd, argv, envp);
-	envp: array de cadena de chars que contiene las variables del entorno del programa
-	cada cadena es una variable de entorno en el formato VARIABLE=valor
+
 	- gestion de argumentos
 	- abrir el infile en modo lectura
 	- abrir el outfile en modo escritura, se crea si no exist y trunca si si 
 	- crear la pipe (con pipefd?) para comunicar comando1 y comando2
-
-Redirecciones:
-	- primer proceso hijo para comando1
-	- segundo proceso hijo para comando2
-	- cerrar y esperar
-
 	return (0);
 }
