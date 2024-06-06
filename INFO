@@ -31,6 +31,11 @@ Redirigir stdout de comando1 al extremo de escritura del pipe.
 Redirigir stdin de comando2 al extremo de lectura del pipe.
 Redirigir stdout de comando2 a archivo2.
 
+Redirecciones:
+	- primer proceso hijo para comando1
+	- segundo proceso hijo para comando2
+	- cerrar y esperar
+	
 Frequently encountered problems
 [0] As for splitting your envp path, print out the result of your split and have a look. Add a / at the end for the path to work correctly.
 

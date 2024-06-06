@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 20:21:30 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/06/04 20:22:42 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/06/06 21:19:59 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+
+# define READ_END   0   //INDEX PIPE EXTREMO LECTURA
+# define WRITE_END  1   //INDEX PIPE EXTREMO ESCRITURA
 
 #endif
