@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 18:20:16 by carolinatac       #+#    #+#             */
-/*   Updated: 2024/06/05 20:02:45 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/06/06 20:03:15 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,24 @@ void	error(void)
 //tengo el proceso hijo creado
 void	child_process(int *fd, char **argv, char **envp)
 {
-	int	open(const char *path, int flags)
+	/*int	open(const char *path, int flags)
 		- for reading, writing or both
+	int	dup2(int fd1, int fd2)
+		- cierra fd y duplica el valor de fd2 a fd1, redirige f1 a f2
+	-abrir archivo para lectura
+	-duplico para que sea este fd -> dup2
+	-duplico de nuevo*/
+	int	infile;
+
+	infile = open(argv[1], O_RDONLY, 0777);
+	if (infile == -1)
+		error();
+	dup2(fd[1], ST)
+	
 	
 }
+
+
 
 void	parent_process(int *fd, char **argv, char **envp)
 {
