@@ -1,5 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
+	/* ************************************************************************** */
+	/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -47,26 +47,28 @@ void	child_process(int *fd, char **argv, char **envp)
 	int	infile;
 	//open me devuelve un fd que asigno a infile
 	//abro el infile en modo lectura
+	close(fd[READ_END]); //CIERRO EXTREMO NO NECESARIO
 	infile = open(argv[1], O_RDONLY);
 	if (infile == -1)
 		error();
 	dup2(fd[WRITE_END], STDOUT_FILENO); //redirecciono stdout para escribir en el extremo de escritura del pipe
 	dup2(infile, STDIN_FILENO); //redirecciono stdin para que lea archivo 1
-	close(fd[READ_END]); //CIERRO EXTREMO NO NECESARIO
 	execute(argv(2), envp);
+	close(infile);
 }
 
 void	parent_process(int *fd, char **argv, char **envp)
 {
 	int	outfile;
 	//se crea si no existe y trunca si si
+	close(fd[WRITE_END]);
 	outfile = open(argv(4), O_WRONLY | O_CREAT | O_TRUNC, 0666)
 	if (outfile == -1)
 		error();
 	dup2(fd[READ_END], STDIN_FILENO);
 	dup2(outfile, STDOUT_FILENO);
-	close(fd[WRITE_END]);
 	execute(argv(3), envp);
+	close(outfile);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -74,6 +76,7 @@ int	main(int argc, char **argv, char **envp)
 	envp: array de cadena de chars que contiene las variables del entorno del programa
 	cada cadena es una variable de entorno en el formato VARIABLE=valor
 	int		fd[2];
+	int		status;
 	pid_t	pid;
 
 	if (argc != 5)
@@ -89,8 +92,9 @@ int	main(int argc, char **argv, char **envp)
 					//estan integrados	
 	if (pid_process < 0)
 		error();
-	else if (!pid_process)
+	if (!pid_process)
 		child_process(fd, argv, envp);
+	wait(&status); //el status es para el wait del padre
 	else
 		parent_process(fd, argv, envp);
 	return (0);
