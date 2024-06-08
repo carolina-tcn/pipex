@@ -6,7 +6,7 @@
 #    By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:42:08 by ctacconi          #+#    #+#              #
-#    Updated: 2024/06/01 12:42:10 by ctacconi         ###   ########.fr        #
+#    Updated: 2024/06/08 19:06:20 by ctacconi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ RM = rm -f
 all: make_libs $(NAME)
 
 make_libs:
-	#Make -C mlx/
 	Make -C ft_printf/
 
 $(NAME): $(OBJ) 
@@ -41,7 +40,6 @@ $(NAME): $(OBJ)
 
 clean:
 	$(RM) $(OBJ)
-	#Make -C mlx/ clean
 	Make -C ft_printf/ clean
 
 fclean: clean
