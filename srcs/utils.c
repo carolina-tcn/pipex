@@ -6,7 +6,7 @@
 /*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:31:23 by carolinatac       #+#    #+#             */
-/*   Updated: 2024/06/12 19:49:25 by carolinatac      ###   ########.fr       */
+/*   Updated: 2024/06/12 19:51:20 by carolinatac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	error(int num_error)
 	exit (EXIT_FAILURE);
 }
 
-void ft_free(char	**strs)
+void ft_free(char **strs)
 {
 	int	i;
 

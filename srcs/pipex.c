@@ -92,8 +92,8 @@ void	parent_process(int *fd, char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	env: array de cadena de chars que contiene las variables del entorno del programa
-	cada cadena es una variable de entorno en el formato VARIABLE=valor
+	//env: array de cadena de chars que contiene las variables del entorno del programa
+	//cada cadena es una variable de entorno en el formato VARIABLE=valor
 	int		fd[2];
 	int		status;
 	pid_t	pid;

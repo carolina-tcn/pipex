@@ -6,7 +6,7 @@
 #    By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:42:08 by ctacconi          #+#    #+#              #
-#    Updated: 2024/06/12 19:54:26 by carolinatac      ###   ########.fr        #
+#    Updated: 2024/06/12 20:20:49 by carolinatac      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ RM = rm -f
 
 # Implicit method
 %.o: %.c Makefile inc/pipex.h ft_printf/libftprintf.a
-	$(CC) $(CFLAGS) -Imlx -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 # My methods
 all: make_libs $(NAME)
