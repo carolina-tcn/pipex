@@ -6,7 +6,7 @@
 #    By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:42:08 by ctacconi          #+#    #+#              #
-#    Updated: 2024/06/12 19:35:43 by carolinatac      ###   ########.fr        #
+#    Updated: 2024/06/12 19:54:26 by carolinatac      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ make_libs:
 
 $(NAME): $(OBJ) 
 	cp ft_printf/libftprintf.a $(NAME)
-	$(CC) $(NAME) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework Appkit -o $(NAME)
+	$(CC) $(NAME) $(OBJ) -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)
