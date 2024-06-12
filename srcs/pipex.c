@@ -37,6 +37,37 @@ void	error(int num_error)
 		perror("Error with dup2");
 	exit (EXIT_FAILURE);
 }
+void ft_free(char	**strs)
+{
+	int	i;
+
+	i = 0;
+	while()
+}
+
+char *get_path(char *cmd, char **envp)
+{
+	char	*path_cmd;
+	char	*path;
+	char	**envp_path;
+	int		i;
+            	i = 0;
+	while(envp[i] && ft_strnstr(envp[i], "PATH", 4) == NULL)
+		i++;
+	envp_path = ft_split(envp[i] + 5, ':');
+	i = 0;
+	while(envp_path[i])
+	{
+		path = ft_strjoin(envp_path[i], "/");
+		if (!path)
+		{
+			ft_free(envp_path);
+		}
+		i++;
+	}
+	           
+	return();
+}
 
 //int execve(const char *path, char *const argv[], char *envp[]);
 void	execute(char *argv, char **envp)
