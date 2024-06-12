@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 20:21:30 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/06/06 21:19:59 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/06/12 19:40:17 by carolinatac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
 
 # define READ_END   0   //INDEX PIPE EXTREMO LECTURA
 # define WRITE_END  1   //INDEX PIPE EXTREMO ESCRITURA

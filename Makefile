@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+         #
+#    By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:42:08 by ctacconi          #+#    #+#              #
-#    Updated: 2024/06/08 19:06:20 by ctacconi         ###   ########.fr        #
+#    Updated: 2024/06/12 19:35:43 by carolinatac      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractol
+NAME = pipex
 
-SRC = srcs/main.c
+SRC = srcs/pipex.c srcs/utils.c
 
 OBJ = $(SRC:.c=.o)
 
