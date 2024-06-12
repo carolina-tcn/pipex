@@ -17,7 +17,6 @@ void	execute(char *argv, char **envp)
 {
 	char	*path_cmd;
 	char	**s_cmd;
-	int		i;
 
 	s_cmd = ft_split(argv, ' ');
 	if (s_cmd == NULL)
@@ -100,7 +99,7 @@ int	main(int argc, char **argv, char **envp)
 	pid_t	pid;
 
 	if (argc != 5)
-		arg_error(5);
+		error(5);
 	//int pipe(int pipefd[2]); si ret 0 success, -1 error. creo la pipe para comunicar los cmnds
 	//comunico los dos comandos
 	//EL PROCESO PADRE ES CREADO POR EL PADRE

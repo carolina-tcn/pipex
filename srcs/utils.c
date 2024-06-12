@@ -6,17 +6,11 @@
 /*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:31:23 by carolinatac       #+#    #+#             */
-/*   Updated: 2024/06/12 19:33:07 by carolinatac      ###   ########.fr       */
+/*   Updated: 2024/06/12 19:49:25 by carolinatac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
-
-void	arg_error(void)
-{
-	ft_putstr_fd("Error\nEx: ./pipex infile cmd1 cmd2 outfile\n", STDERR_FILENO);
-	exit (EXIT_FAILURE);
-}
 
 void	error(int num_error)
 {
@@ -37,6 +31,7 @@ void	error(int num_error)
 		perror("Error with dup2");
 	exit (EXIT_FAILURE);
 }
+
 void ft_free(char	**strs)
 {
 	int	i;

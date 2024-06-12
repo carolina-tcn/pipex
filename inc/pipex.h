@@ -6,7 +6,7 @@
 /*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 20:21:30 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/06/12 19:40:17 by carolinatac      ###   ########.fr       */
+/*   Updated: 2024/06/12 19:49:37 by carolinatac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,10 @@
 
 # define READ_END   0   //INDEX PIPE EXTREMO LECTURA
 # define WRITE_END  1   //INDEX PIPE EXTREMO ESCRITURA
+
+void	arg_error(void);
+void	error(int num_error);
+char    *get_path(char *cmd, char **envp);
+void    ft_free(char	**strs);
 
 #endif
