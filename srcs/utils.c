@@ -6,31 +6,40 @@
 /*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:31:23 by carolinatac       #+#    #+#             */
-/*   Updated: 2024/06/13 11:52:03 by carolinatac      ###   ########.fr       */
+/*   Updated: 2024/06/13 17:44:57 by carolinatac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
+void	handle_error(char **s_cmd, char *path_cmd, int error_code)
+{
+	if (s_cmd)
+        ft_free(s_cmd);
+    if (path_cmd)
+        free(path_cmd);
+    error(error_code);	
+}
+
 void	error(int num_error)
 {
 	if (num_error == 1)
 		perror("ERROR");
-	if (num_error == 2)
-		perror("Error splitting command\n");
-	if (num_error == 3)
+	else if (num_error == 2)
+		perror("error splitting command\n");
+	else if (num_error == 3)
 	{
-		perror("Command not found\n");
+		ft_putstr_fd("command not found\n", 2);
 		exit(127);
 	}
-	if (num_error == 4)
-		perror("Error executing command\n");
-	if (num_error == 5)
-		ft_putstr_fd("Usage: <./pipex infile cmd1 cmd2 outfile>\n", 2);
-	if (num_error == 6)
-		perror("Error with dup2");
-	if (num_error == 7)
-		perror("Infile");
+	else if (num_error == 4)
+		perror("error executing command\n");
+	else if (num_error == 5)
+		ft_putstr_fd("ERROR-Usage: ./pipex infile cmd1 cmd2 outfile\n", 2);
+	else if (num_error == 6)
+		perror("error with dup2");
+	else if (num_error == 7)
+		perror("infile");
 	exit (EXIT_FAILURE);
 }
 

@@ -6,7 +6,7 @@
 /*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 20:21:30 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/06/13 11:26:58 by carolinatac      ###   ########.fr       */
+/*   Updated: 2024/06/13 17:48:37 by carolinatac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ void	arg_error(void);
 void	error(int num_error);
 char    *get_path(char *cmd, char **envp);
 void    ft_free(char	**strs);
+void	handle_error(char **s_cmd, char *path_cmd, int error_code);
+
 
 #endif

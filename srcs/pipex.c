@@ -12,11 +12,11 @@
 
 #include "../inc/pipex.h"
 
-void	debug(char *msg)
+/*void	debug(char *msg)
 {
 	perror(msg);
 	exit(EXIT_FAILURE);
-}
+}*/
 //int execve(const char *path, char *const argv[], char *envp[]);
 void	execute(char *argv, char **envp)
 {
@@ -25,19 +25,22 @@ void	execute(char *argv, char **envp)
 
 	s_cmd = ft_split(argv, ' ');
 	if (s_cmd == NULL)
-		error(2);
+		//error(2);
+		handle_error(NULL, NULL, 2);
 	path_cmd = get_path(s_cmd[0], envp);
 	if (path_cmd == NULL)
-	{
+	/*{
 		ft_free(s_cmd);
 		error(3);
-	}
+	}*/
+		handle_error(s_cmd, NULL, 3);
 	if (execve(path_cmd, s_cmd, envp) == -1)
-	{	
+	/*{	
 		ft_free(s_cmd);
 		free(path_cmd);
 		error(4);
-	}
+	}*/
+		handle_error(s_cmd, path_cmd, 4);
 
 //On success, execve() does not return, on error -1 is returned,
 }
@@ -120,16 +123,16 @@ int	main(int argc, char **argv, char **envp)
 					//estan integrados	
 	if (pid < 0)
 		error(1);
-	printf("fork successful\n");
+	//printf("fork successful\n");
 	if (!pid)
 	{
-		printf("Child: I'm the child, my internal pid is %d.\n", pid);
+		//printf("Child: I'm the child, my internal pid is %d.\n", pid);
 		child_process(fd, argv, envp);
 	}
 	wait(&status); //el status es para el wait del padre
 	if (pid)
 	{
-		printf("Parent: I'm the parent, my child's pid is %d.\n", pid);
+		//printf("Parent: I'm the parent, my child's pid is %d.\n", pid);
 		parent_process(fd, argv, envp);
 	}
 	return (EXIT_SUCCESS);
