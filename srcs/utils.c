@@ -6,7 +6,7 @@
 /*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:31:23 by carolinatac       #+#    #+#             */
-/*   Updated: 2024/06/12 19:51:20 by carolinatac      ###   ########.fr       */
+/*   Updated: 2024/06/13 11:52:03 by carolinatac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	error(int num_error)
 {
 	if (num_error == 1)
-		perror("ERROR\n");
+		perror("ERROR");
 	if (num_error == 2)
 		perror("Error splitting command\n");
 	if (num_error == 3)
@@ -29,6 +29,8 @@ void	error(int num_error)
 		ft_putstr_fd("Usage: <./pipex infile cmd1 cmd2 outfile>\n", 2);
 	if (num_error == 6)
 		perror("Error with dup2");
+	if (num_error == 7)
+		perror("Infile");
 	exit (EXIT_FAILURE);
 }
 

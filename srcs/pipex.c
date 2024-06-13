@@ -12,6 +12,11 @@
 
 #include "../inc/pipex.h"
 
+void	debug(char *msg)
+{
+	perror(msg);
+	exit(EXIT_FAILURE);
+}
 //int execve(const char *path, char *const argv[], char *envp[]);
 void	execute(char *argv, char **envp)
 {
@@ -52,14 +57,16 @@ void	child_process(int *fd, char **argv, char **envp)
 	close(fd[READ_END]); //CIERRO EXTREMO NO NECESARIO
 	infile = open(argv[1], O_RDONLY);
 	if (infile == -1)
-		error(1);
+		error(7);
 	if (dup2(fd[WRITE_END], STDOUT_FILENO) == -1) //redirecciono stdout para escribir en el extremo de escritura del pipe
 	{
+		//debug("primer dup del hijo");
 		close(infile);
 		error(6);
 	}
-	dup2(infile, STDIN_FILENO); //redirecciono stdin para que lea archivo 1
+	if (dup2(infile, STDIN_FILENO) == -1) //redirecciono stdin para que lea archivo 1
 	{
+		//debug("segundo dup del hijo");
 		close(infile);
 		error(6);
 	}
@@ -78,11 +85,13 @@ void	parent_process(int *fd, char **argv, char **envp)
 		error(1);
 	if (dup2(fd[READ_END], STDIN_FILENO) == -1)
 	{
+		//debug("primer dup del padre");
 		close(outfile);
 		error(6);
 	}
 	if (dup2(outfile, STDOUT_FILENO) == -1)
 	{
+		//debug("segundo dup del padre");
 		close(outfile);
 		error(6);
 	}
@@ -111,10 +120,17 @@ int	main(int argc, char **argv, char **envp)
 					//estan integrados	
 	if (pid < 0)
 		error(1);
+	printf("fork successful\n");
 	if (!pid)
+	{
+		printf("Child: I'm the child, my internal pid is %d.\n", pid);
 		child_process(fd, argv, envp);
+	}
 	wait(&status); //el status es para el wait del padre
 	if (pid)
+	{
+		printf("Parent: I'm the parent, my child's pid is %d.\n", pid);
 		parent_process(fd, argv, envp);
-	return (0);
+	}
+	return (EXIT_SUCCESS);
 }
