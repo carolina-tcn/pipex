@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+         #
+#    By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:42:08 by ctacconi          #+#    #+#              #
-#    Updated: 2024/06/12 20:20:49 by carolinatac      ###   ########.fr        #
+#    Updated: 2024/06/26 13:20:02 by ctacconi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,31 +20,30 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-INCLUDE = Makefile pipex.h
+INCLUDE = Makefile inc/pipex.h ft_printf/libftprintf.a
 
 RM = rm -f
 
-# Implicit method
-%.o: %.c Makefile inc/pipex.h ft_printf/libftprintf.a
+# Regla implícita para compilar archivos .o desde .c
+%.o: %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-# My methods
+# Reglas para el makefile
 all: make_libs $(NAME)
 
 make_libs:
-	Make -C ft_printf/
+	make -C ft_printf/
 
-$(NAME): $(OBJ) 
-	cp ft_printf/libftprintf.a $(NAME)
-	$(CC) $(NAME) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) ft_printf/libftprintf.a -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)
-	Make -C ft_printf/ clean
+	make -C ft_printf/ clean
 
 fclean: clean
 	$(RM) $(NAME)
-	Make -C ft_printf/ fclean
+	make -C ft_printf/ fclean
 
 re: fclean all
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+         #
+#    By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 16:04:04 by ctacconi          #+#    #+#              #
-#    Updated: 2024/02/10 18:14:13 by ctacconi         ###   ########.fr        #
+#    Updated: 2024/06/26 12:52:41 by ctacconi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ RM=rm -f
 all: make_libs $(NAME)
 
 make_libs:
-	Make -C libft/
+	make -C libft/
 
 $(NAME): $(OBJ)
 	cp libft/libft.a $(NAME)
@@ -49,11 +49,11 @@ $(NAME): $(OBJ)
 
 clean:
 	$(RM) $(OBJ)
-	Make -C libft/ clean
+	make -C libft/ clean
 
 fclean: clean
 	$(RM) $(NAME)
-	Make -C libft/ fclean
+	make -C libft/ fclean
 
 re: fclean all
 
