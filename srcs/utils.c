@@ -6,7 +6,7 @@
 /*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:31:23 by carolinatac       #+#    #+#             */
-/*   Updated: 2024/06/13 17:44:57 by carolinatac      ###   ########.fr       */
+/*   Updated: 2024/06/27 18:59:04 by carolinatac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	handle_error(char **s_cmd, char *path_cmd, int error_code)
         ft_free(s_cmd);
     if (path_cmd)
         free(path_cmd);
-    error(error_code);	
+    error(error_code);
 }
 
 void	error(int num_error)
@@ -65,7 +65,11 @@ char *get_path(char *cmd, char **envp)
             	i = 0;
 	while(envp[i] && ft_strnstr(envp[i], "PATH", 4) == NULL)
 		i++;
+	if (!envp[i])
+		return (NULL);
 	envp_path = ft_split(envp[i] + 5, ':');
+	if (!envp_path)
+		error(3);
 	i = 0;
 	while(envp_path[i])
 	{
