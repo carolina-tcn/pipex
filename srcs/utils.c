@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 19:31:23 by carolinatac       #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/06/26 16:35:04 by ctacconi         ###   ########.fr       */
-=======
-/*   Updated: 2024/06/27 18:59:04 by carolinatac      ###   ########.fr       */
->>>>>>> refs/remotes/origin/main
+/*   Created: 2024/06/28 16:20:17 by ctacconi          #+#    #+#             */
+/*   Updated: 2024/06/28 16:20:21 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
