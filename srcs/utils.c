@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carolinatacconis <carolinatacconis@stud    +#+  +:+       +#+        */
+/*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:31:23 by carolinatac       #+#    #+#             */
-/*   Updated: 2024/06/13 17:44:57 by carolinatac      ###   ########.fr       */
+/*   Updated: 2024/06/26 16:35:04 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,24 @@ void ft_free(char **strs)
 	free(strs);
 }
 
+//manejo tanto comandos simples como rutas absolutas
+//F_OK check the existance of the file
 char *get_path(char *cmd, char **envp)
 {
 	char	*path_cmd;
+
+	if (access(cmd, F_OK | X_OK) == 0)
+	{
+		path_cmd = ft_strdup(cmd);
+		if (!path_cmd)
+			error (1);
+		return (path_cmd);
+	}
 	char	*path;
 	char	**envp_path;
 	int		i;
-            	i = 0;
+    
+	i = 0;
 	while(envp[i] && ft_strnstr(envp[i], "PATH", 4) == NULL)
 		i++;
 	envp_path = ft_split(envp[i] + 5, ':');
