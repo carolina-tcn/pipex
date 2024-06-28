@@ -43,6 +43,7 @@ void	execute(char *argv, char **envp)
 		handle_error(s_cmd, path_cmd, 4);
 
 //On success, execve() does not return, on error -1 is returned,
+//TENGO QUE LIBERAR AQUI???
 }
 
 void	child_process(int *fd, char **argv, char **envp)
