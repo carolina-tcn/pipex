@@ -6,7 +6,7 @@
 #    By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:42:08 by ctacconi          #+#    #+#              #
-#    Updated: 2024/06/28 17:00:20 by ctacconi         ###   ########.fr        #
+#    Updated: 2024/07/01 22:31:46 by ctacconi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 
 INCLUDE = Makefile inc/pipex.h ft_printf/libftprintf.a
 
@@ -38,12 +38,12 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) ft_printf/libftprintf.a -o $(NAME)
 
 clean:
-	$(RM) $(OBJ)
 	make -C ft_printf/ clean
+	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
 	make -C ft_printf/ fclean
+	$(RM) $(NAME)
 
 re: fclean all
 

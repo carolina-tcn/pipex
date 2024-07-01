@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 16:20:17 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/06/28 16:20:21 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/07/01 22:48:53 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	handle_error(char **s_cmd, char *path_cmd, int error_code)
 {
 	if (s_cmd)
-        ft_free(s_cmd);
-    if (path_cmd)
-        free(path_cmd);
-    error(error_code);
+		ft_free(s_cmd);
+	if (path_cmd)
+		free(path_cmd);
+	error(error_code);
 }
 
 void	error(int num_error)
@@ -43,12 +43,12 @@ void	error(int num_error)
 	exit (EXIT_FAILURE);
 }
 
-void ft_free(char **strs)
+void	ft_free(char **strs)
 {
 	int	i;
 
 	i = 0;
-	while(strs[i])
+	while (strs[i])
 	{
 		free(strs[i]);
 		i++;
@@ -56,11 +56,9 @@ void ft_free(char **strs)
 	free(strs);
 }
 
-//manejo tanto comandos simples como rutas absolutas
-//F_OK check the existance of the file
-char *get_path(char *cmd, char **envp)
+char	*get_path(char *cmd, char **envp, int i, char *path_cmd)
 {
-	char	*path_cmd;
+	char	**envp_path;
 
 	if (access(cmd, F_OK | X_OK) == 0)
 	{
@@ -69,12 +67,7 @@ char *get_path(char *cmd, char **envp)
 			error (1);
 		return (path_cmd);
 	}
-	char	*path;
-	char	**envp_path;
-	int		i;
-    
-	i = 0;
-	while(envp[i] && ft_strnstr(envp[i], "PATH", 4) == NULL)
+	while (envp[i] && ft_strnstr(envp[i], "PATH", 4) == NULL)
 		i++;
 	if (!envp[i])
 		return (NULL);
@@ -82,11 +75,22 @@ char *get_path(char *cmd, char **envp)
 	if (!envp_path)
 		error(3);
 	i = 0;
-	while(envp_path[i])
+	path_cmd = ft_aux(0, envp_path, cmd, path_cmd);
+	if (path_cmd)
+		return (path_cmd);
+	ft_free(envp_path);
+	return (NULL);
+}
+
+char	*ft_aux(int i, char **envp_path, char *cmd, char *path_cmd)
+{
+	char	*path;
+
+	while (envp_path[i++])
 	{
 		path = ft_strjoin(envp_path[i], "/");
 		if (!path)
-		{	
+		{
 			ft_free(envp_path);
 			error(1);
 		}
@@ -103,8 +107,6 @@ char *get_path(char *cmd, char **envp)
 			return (path_cmd);
 		}
 		free(path_cmd);
-		i++;
 	}
-	ft_free(envp_path);
-	return(NULL);
+	return (NULL);
 }
