@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 16:20:17 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/07/01 22:48:53 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/07/02 21:48:27 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	*get_path(char *cmd, char **envp, int i, char *path_cmd)
 	envp_path = ft_split(envp[i] + 5, ':');
 	if (!envp_path)
 		error(3);
-	i = 0;
+	i = -1;
 	path_cmd = ft_aux(0, envp_path, cmd, path_cmd);
 	if (path_cmd)
 		return (path_cmd);
@@ -86,7 +86,7 @@ char	*ft_aux(int i, char **envp_path, char *cmd, char *path_cmd)
 {
 	char	*path;
 
-	while (envp_path[i++])
+	while (envp_path[++i])
 	{
 		path = ft_strjoin(envp_path[i], "/");
 		if (!path)
