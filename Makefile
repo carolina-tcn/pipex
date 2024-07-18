@@ -6,7 +6,7 @@
 #    By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/01 12:42:08 by ctacconi          #+#    #+#              #
-#    Updated: 2024/07/01 22:31:46 by ctacconi         ###   ########.fr        #
+#    Updated: 2024/07/03 19:31:42 by ctacconi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,9 @@ INCLUDE = Makefile inc/pipex.h ft_printf/libftprintf.a
 
 RM = rm -f
 
-# Regla implícita para compilar archivos .o desde .c
 %.o: %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-# Reglas para el makefile
 all: make_libs $(NAME)
 
 make_libs:

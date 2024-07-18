@@ -6,22 +6,22 @@
 /*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 16:20:17 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/07/02 21:48:27 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:41:35 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
 
-void	handle_error(char **s_cmd, char *path_cmd, int error_code)
+void	handle_error(char *argv, char **s_cmd, char *path_cmd, int error_code)
 {
 	if (s_cmd)
 		ft_free(s_cmd);
 	if (path_cmd)
 		free(path_cmd);
-	error(error_code);
+	error(error_code, argv);
 }
 
-void	error(int num_error)
+void	error(int num_error, char *str)
 {
 	if (num_error == 1)
 		perror("ERROR");
@@ -29,7 +29,9 @@ void	error(int num_error)
 		perror("error splitting command\n");
 	else if (num_error == 3)
 	{
-		ft_putstr_fd("command not found\n", 2);
+		ft_putstr_fd("command not found: ", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("\n", 2);
 		exit(127);
 	}
 	else if (num_error == 4)
@@ -39,7 +41,7 @@ void	error(int num_error)
 	else if (num_error == 6)
 		perror("error with dup2");
 	else if (num_error == 7)
-		perror("infile");
+		perror(str);
 	exit (EXIT_FAILURE);
 }
 
@@ -64,7 +66,7 @@ char	*get_path(char *cmd, char **envp, int i, char *path_cmd)
 	{
 		path_cmd = ft_strdup(cmd);
 		if (!path_cmd)
-			error (1);
+			error (1, NULL);
 		return (path_cmd);
 	}
 	while (envp[i] && ft_strnstr(envp[i], "PATH", 4) == NULL)
@@ -73,7 +75,7 @@ char	*get_path(char *cmd, char **envp, int i, char *path_cmd)
 		return (NULL);
 	envp_path = ft_split(envp[i] + 5, ':');
 	if (!envp_path)
-		error(3);
+		error(3, NULL);
 	i = -1;
 	path_cmd = ft_aux(0, envp_path, cmd, path_cmd);
 	if (path_cmd)
@@ -92,14 +94,14 @@ char	*ft_aux(int i, char **envp_path, char *cmd, char *path_cmd)
 		if (!path)
 		{
 			ft_free(envp_path);
-			error(1);
+			error(1, NULL);
 		}
 		path_cmd = ft_strjoin(path, cmd);
 		free(path);
 		if (!path_cmd)
 		{
 			ft_free(envp_path);
-			error(1);
+			error(1, NULL);
 		}
 		if (access(path_cmd, F_OK | X_OK) == 0)
 		{

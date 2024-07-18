@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:01:58 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/07/01 22:49:22 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:11:06 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 # define WRITE_END	1
 
 void	arg_error(void);
-void	error(int num_error);
+void	error(int num_error, char *str);
 char	*get_path(char *cmd, char **envp, int i, char *path_cmd);
 void	ft_free(char **strs);
-void	handle_error(char **s_cmd, char *path_cmd, int error_code);
+void	handle_error(char *argv, char **s_cmd, char *path_cmd, int error_code);
 char	*ft_aux(int i, char **envp_path, char *cmd, char *path_cm);
 
 #endif
